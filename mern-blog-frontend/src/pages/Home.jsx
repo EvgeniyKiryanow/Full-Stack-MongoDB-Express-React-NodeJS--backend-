@@ -13,6 +13,7 @@ import { fetchPosts, fetchTags } from '../redux/slices/posts';
 export const Home = () => {
   const dispatch = useDispatch();
   const { posts , tags} = useSelector(state => state.posts);
+  const { auth } = useSelector(state => state.auth);
 
   const isPostsLoading = posts.status == "loading"
   const isTagsLoading = tags.status == "loading"
@@ -21,7 +22,6 @@ export const Home = () => {
     dispatch(fetchPosts());
     dispatch(fetchTags());
   }, []);
-  console.log(posts,'posts')
   return (
     <>
       <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
